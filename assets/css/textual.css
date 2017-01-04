@@ -80,7 +80,7 @@ a:hover, a:focus {
 }
 h1, h2, h3, h4, h5, h6 {
     margin-bottom: .5rem;
-    font-weight: 700;
+    font-weight: bold;
     line-height: 1.2;
     color: #313131;
     font-family: "PT Sans Narrow", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -102,16 +102,14 @@ h2 {
 }
 h3 {
     margin-top: 1.75rem;
-    font-size: 1.25rem;
+    font-size: 1.25rem
 }
 h4, h5, h6 {
     letter-spacing: 0;
     margin-top: 1rem;
-    font-size: 1rem;
-    font-weight: 400;
+    font-size: 1rem
 }
 h4 {
-    font-weight: 700;
     margin-top: 1.5rem;
     text-transform: uppercase;
 }
@@ -202,9 +200,6 @@ code {
     border-radius: 3px;
     /*-webkit-font-smoothing: subpixel-antialiased;*/
     /*-moz-osx-font-smoothing: auto;*/
-}
-code.lang-text {
-    background: #f9f9f9;
 }
 pre {
     display: block;

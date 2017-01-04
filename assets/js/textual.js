@@ -349,6 +349,11 @@ String.prototype.trim = String.prototype.trim || function(o) {
         }
 
 
+        // set open graph description
+        var og_desc = $(marked(item.excerpt)).text();
+        set_open_graph("og:description", og_desc);
+        set_open_graph("twitter:description", og_desc);
+
         item.content = marked(item.body);
         html = renderTemplate(item, folder);
 
@@ -455,6 +460,10 @@ String.prototype.trim = String.prototype.trim || function(o) {
         }
         lastURL = loc;
         lastPagination = reqPagination;
+
+        // set open graph description
+        set_open_graph("og:description", $tjs.config.site_tagline);
+        set_open_graph("twitter:description", $tjs.config.site_tagline);
 
         // reset
         coverimage = "";
@@ -620,6 +629,19 @@ String.prototype.trim = String.prototype.trim || function(o) {
             }
         }
 
+        // add rest of open graph tags
+        var og_image = get_full_image_url(coverimage);
+        set_open_graph("og:title", document.title.split(" | ")[0]);
+        set_open_graph("twitter:title", document.title.split(" | ")[0]);
+        set_open_graph("og:image", og_image);
+        set_open_graph("twitter:image", og_image);
+        set_open_graph("og:type", "article");
+        set_open_graph("og:url", window.location.href.split("#")[0]);
+        set_open_graph("og:site_name", $tjs.config.site_name);
+        set_open_graph("fb:app_id", $tjs.config.facebook_app_id);
+        set_open_graph("twitter:card", "summary_large_image");
+
+        // add to page
         $("main").fadeOut('fast', function() {
             $(".cover-image").first().hide().css('background-image', '');
             if (coverimage !== "") {
@@ -720,18 +742,6 @@ String.prototype.trim = String.prototype.trim || function(o) {
         if ($tjs.config.comments.provider.toLowerCase() == 'facebook') {
             setTimeout(function() {
                 $("main .post-comments").html('<div class="fb-comments" data-width="100%" data-href="'+window.location.href+'" data-numposts="'+$tjs.config.comments.facebook_numposts+'"></div>');
-
-                window.fbAsyncInit = function() {
-                    var conf = {
-                        xfbml      : true,
-                        version    : 'v2.8'
-                    };
-                    if ($tjs.config.comments.facebook_app_id) {
-                        conf['appId'] = $tjs.config.comments.facebook_app_id;
-                    }
-                    FB.init(conf);
-                };
-
                 if (window.FB) {
                     FB.XFBML.parse();
                 } else {
@@ -743,9 +753,7 @@ String.prototype.trim = String.prototype.trim || function(o) {
                         fjs.parentNode.insertBefore(js, fjs);
                     }(document, 'script', 'facebook-jssdk'));
                 }
-
             }, 500);
-
         }
 
         // disqus comments
@@ -786,9 +794,49 @@ String.prototype.trim = String.prototype.trim || function(o) {
         $(".error-title").html($tjs.config.error_page_title_text);
     }
 
+    // --------------------
+    // open graph methods
+    function set_open_graph(name, value) {
+        var tag = 'meta[name='+ name.replace(":", "\\:") +']';
+        if (name.indexOf("twitter")) {
+            tag = 'meta[property='+ name.replace(":", "\\:") +']';
+        }
+        $(tag).remove();
+        if (value != "") {
+            if ($(tag).length > 0) {
+                $(tag).attr('content', value);
+            }
+            else {
+                if (name.indexOf("twitter")) {
+                    $('head').append('<meta name="'+name+'" content="'+ value +'">');
+                } else {
+                    $('head').append('<meta property="'+name+'" content="'+ value +'">');
+                }
+            }
+        }
+    }
+
+    function get_full_image_url(image_url) {
+        if (image_url == "") return "";
+        var img = new Image();
+        img.src =image_url;
+        return img.src;
+    }
+    // --------------------
+
     $tjs.init = function() {
 
         $.getScript('./assets/js/config.js', function(){
+
+            // prepare facebook
+            window.fbAsyncInit = function() {
+                var conf = {xfbml: true, version: 'v2.8' };
+                if ($tjs.config.facebook_app_id) {
+                    conf['appId'] = $tjs.config.facebook_app_id;
+                }
+                console.log(conf);
+                FB.init(conf);
+            };
 
             // localize
             localize();
