@@ -79,10 +79,10 @@
         // ---------------------------------
 
         // posts directory name
-        postsdir: 'posts',
+        postsdir: 'demo/posts',
 
         // pages directory name
-        pagesdir: 'pages',
+        pagesdir: 'demo/pages',
 
 
         // ---------------------------------
@@ -94,7 +94,7 @@
         // ---------------------------------
 
         // use github pages
-        github_mode: false,
+        github_mode: true,
 
         // github pages settings: user, repo, branch
         github_settings: {
