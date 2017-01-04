@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Assistant:400,700&subset=hebrew');
+
+html, body {
+    direction: rtl !important;
+    letter-spacing: 0;
+}
+html,body,h1,h2,h3,h4,h5,h6,p,blockquote,div,time,.post-author {
+    font-family: Assistant, arial, sans-serif !important;
+}
+h1 {
+    font-weight: 400;
+}
+blockquote {
+    padding: .5rem 1rem .5rem 0rem;
+    margin: 1.2rem 1.75rem .8rem 0;
+    border: 0;
+}
+blockquote:before {
+  content: "\201D";
+  float: left;
+  margin: -1.2rem -3.25rem 0 0 ;
+}
+nav.pagination a.pagination-older {
+    float: right;
+    padding-left: 1rem;
+}
+nav.pagination a.pagination-newer {
+    float: left;
+    padding-right: 1rem;
+}
+.post-meta .post-author-info {
+    float: right;
+}
+.post-meta .share-post {
+    text-align: left;
+    float: left;
+}
+.post-meta .share-icon, .post-meta .share-icon:hover {
+    margin: 0 5px 0 -5px;
+    font-size: 100%;
+}
+.master-header-tagline {
+    margin-left: 0;
+    margin-right: .25rem;
+}
+.master-header nav.topnav {
+    float: left;
+}
+.master-header nav.topnav ul li {
+    float: right;
+    padding-right: 0;
+    padding-left: .5rem;
+}
+main ul li:before {
+    font-size: 250%;
+    line-height: 1px;
+    margin: .5rem -1.1rem 0 0;
+    content: "\2022 ";
+    position: absolute;
+    color: rgba(50, 155, 205, .5);
+}
+.post-date, .post-author, .post-category ul li, .post-tags ul li {
+    margin: 0 0 0 .5rem;
+    padding: 0;
+    float: right;
+}
+.tag-page-title:before {
+    margin-right: 0;
+    margin-left: 2px;
+}
+@media only screen and (max-width: 768px) {
+    .master-header nav.topnav {
+        float: right;
+        margin-bottom: .5rem;
+    }
+}

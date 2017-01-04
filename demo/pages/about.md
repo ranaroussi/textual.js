@@ -1,11 +1,10 @@
 ---
 layout: page
-tsitle: About About
+tsitle: About
+coverimage: assets/img/face-984031_1920.jpg
 ---
 
-# -> About Textual.js <-
-
-![textual.js](assets/img/devices.jpg "Textual.js in action")
+# About
 
 **Textual.js** is client-side static website generator written in Javascipt that uses
 Markdown files to generate a website in real-time, without the need of server-side support for

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="./assets/css/fontello.css">
+    <link rel="stylesheet" href="./assets/css/textual.css">
+    <link rel="stylesheet" href="./assets/css/custom.css">
+    <!--[if lt IE 9]>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="content">
+
+    <header class="master-header">
+        <div class="container">
+            <a href="#" class="master-header-title" title="Home"></a>
+            <small class="master-header-tagline"></small>
+            <nav class="topnav"></nav>
+            <div class="clearfix"></div>
+        </div>
+    </header>
+
+    <div class="cover-image"></div>
+    <main class="container"></main>
+
+    <footer class="container master-footer">
+        <section class="master-footer-content"></section>
+        <section class="site-credit"></section>
+    </footer>
+
+
+    <!-- Home/special View -->
+    <script id="main-template" type="x-template">
+        <article class="post">
+            <h2 class="post-title"></h2>
+            <div class="post-content"></div>
+            <div class="post-meta">
+                <time class="post-date"></time>
+                <span class="post-author"></span>
+                <span class="post-category"></span>
+                <span class="post-tags"></span>
+                <div class="clearfix"></div>
+            </div>
+            <hr>
+        </article>
+    </script>
+
+    <script id="pagination-template" type="x-template">
+        <nav class="pagination">
+            <a href="#" class="hidden pagination-older"></a>
+            <a href="#" class="hidden pagination-newer"></a>
+            <div class="clearfix"></div>
+        </nav>
+    </script>
+
+    <!-- special View Headers -->
+    <script id="author-template" type="x-template">
+        <section class="page-header">
+            <h1 class="author-page-title"></h1>
+            <p class="author-page-bio"></p>
+            <span class="author-page-avatar"></span>
+        </section>
+    </script>
+    <script id="category-template" type="x-template">
+        <section class="page-header">
+            <h1 class="category-page-title"></h1>
+        </section>
+    </script>
+    <script id="tag-template" type="x-template">
+        <section class="page-header">
+            <h1 class="tag-page-title"></h1>
+        </section>
+    </script>
+
+    <!-- Page View -->
+    <script id="page-template" type="x-template">
+        <section class="page">
+            <h1 class="page-title"></h1>
+            <div class="page-content"></div>
+        </article>
+    </script>
+
+    <!-- Post View -->
+    <script id="post-template" type="x-template">
+        <article class="post">
+            <h1 class="post-title"></h1>
+            <div class="post-meta">
+                <time class="post-date"></time>
+                <span class="post-author"></span>
+                <span class="post-category"></span>
+                <span class="post-tags"></span>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="post-content"></div>
+
+            <div class="post-footer">
+                <div class="post-author-info">
+                    <span class="post-avatar"></span>
+                    <span class="post-author"></span>
+                    <span class="post-bio"></span>
+                </div>
+                <div class="share-post">
+                    <h3 class="share-post-title"></h3>
+                    <a class="share-icon icon-twitter" href="" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235'); return false;">
+                        <span class="hidden">Twitter</span>
+                    </a>
+                    <a class="share-icon icon-facebook" href="" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                        <span class="hidden">Facebook</span>
+                    </a>
+                    <a class="share-icon icon-gplus" href="" onclick="window.open(this.href, 'google-plus-share', 'width=400,height=450');return false;">
+                        <span class="hidden">Google</span>
+                    </a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </article>
+    </script>
+
+    <!-- Error View -->
+    <script id="error-template" type="x-template">
+        <div class="error">
+            <h2 class="error-title"></h2>
+            <p class="error-text"></p>
+        </div>
+    </script>
+
+</div>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="./assets/js/textual.js"></script>
+
+</body>
+</html>
