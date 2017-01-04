@@ -41,11 +41,13 @@
         // your google analytics code
         google_analytics_code: 'UA-89785231-1',
 
+        // facebook app (used in comments and open-graph)
+        facebook_app_id: '',
+
         // choose comment provider (leave blank for none)
         comments: {
             provider: '', // disqus | facebook
             disqus_shortname: '',
-            facebook_app_id: '',
             facebook_numposts: 5
         },
 

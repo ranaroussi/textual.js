@@ -8,14 +8,23 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./assets/css/fontello.css">
     <link rel="stylesheet" href="./assets/css/textual.css">
     <link rel="stylesheet" href="./assets/css/custom.css">
     <!--[if lt IE 9]>
         <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
     <![endif]-->
+
+    <!-- prefetch -->
+    <link rel="dns-prefetch" href="//api.github.com">
+    <link rel="dns-prefetch" href="//raw.githubusercontent.com">
+    <link rel="dns-prefetch" href="//facebook.com">
+    <link rel="dns-prefetch" href="//twitter.com">
+    <link rel="dns-prefetch" href="//google.com">
 </head>
 <body>
+<div id="fb-root"></div>
 
 <div class="content">
 
@@ -85,7 +94,7 @@
         <section class="page">
             <h1 class="page-title"></h1>
             <div class="page-content"></div>
-        </article>
+        </section>
     </script>
 
     <!-- Post View -->
@@ -101,6 +110,7 @@
             </div>
 
             <div class="post-content"></div>
+            <div class="post-comments"></div>
 
             <div class="post-footer">
                 <div class="post-author-info">
@@ -108,8 +118,8 @@
                     <span class="post-author"></span>
                     <span class="post-bio"></span>
                 </div>
-                <div class="share-post">
-                    <h3 class="share-post-title"></h3>
+                <div class="post-share">
+                    <h3 class="post-share-title"></h3>
                     <a class="share-icon icon-twitter" href="" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235'); return false;">
                         <span class="hidden">Twitter</span>
                     </a>

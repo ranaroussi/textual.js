@@ -464,7 +464,7 @@ nav.pagination a.pagination-newer {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-.post-footer .post-author-info, .post-footer .share-post {
+.post-footer .post-author-info, .post-footer .post-share {
     margin: 0;
     padding: 0;
     width: 70%;
@@ -472,7 +472,7 @@ nav.pagination a.pagination-newer {
 .post-author-info {
     float: left;
 }
-.post-footer .share-post {
+.post-footer .post-share {
     float: right;
     text-align: right;
     width: 30%;
