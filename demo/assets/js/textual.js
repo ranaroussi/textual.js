@@ -782,7 +782,7 @@ String.prototype.trim = String.prototype.trim || function(o) {
         // localization
         $(".pagination-older").html($tjs.config.older_posts_text);
         $(".pagination-newer").html($tjs.config.newer_posts_text);
-        $(".share-post-title").html($tjs.config.share_post_text);
+        $(".post-share-title").html($tjs.config.share_post_text);
         $(".error-title").html($tjs.config.error_page_title_text);
     }
 
@@ -808,7 +808,7 @@ String.prototype.trim = String.prototype.trim || function(o) {
 
             // google analytics
             if ($tjs.config.google_analytics_code != "" &&
-                $tjs.config.google_analytics_code.indexOf("XXXX") !== -1) {
+                $tjs.config.google_analytics_code.indexOf("XXXX") === -1) {
                 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
                     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
