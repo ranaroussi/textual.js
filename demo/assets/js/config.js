@@ -39,7 +39,7 @@
         homepage: '',
 
         // your google analytics code
-        google_analytics_code: 'UA-XXXXXXX-2',
+        google_analytics_code: 'UA-89785231-1',
 
         // choose comment provider (leave blank for none)
         comments: {
