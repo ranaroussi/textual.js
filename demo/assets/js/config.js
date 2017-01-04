@@ -14,7 +14,7 @@
         // site author (html/markdown allowed)
         author_name: 'Writer Brooks',
         author_bio: 'Father. Husband. Entrepreneur. Non-Existent.',
-        author_avatar: "assets/img/author1.jpg",
+        author_avatar: "https://raw.githubusercontent.com/ranaroussi/textual.js/gh-pages/demo/assets/img/author1.jpg",
 
         // site footer text (html/markdown allowed)
         site_footer: '&copy; ' + new Date().getFullYear() + ' All Rights Reserved. &nbsp; [Home](#) | [Sitemap](#sitemap)',
@@ -77,10 +77,10 @@
         // ---------------------------------
 
         // posts directory name
-        postsdir: 'posts',
+        postsdir: 'demo/posts',
 
         // pages directory name
-        pagesdir: 'pages',
+        pagesdir: 'demo/pages',
 
 
         // ---------------------------------
@@ -92,13 +92,13 @@
         // ---------------------------------
 
         // use github pages
-        github_mode: false,
+        github_mode: true,
 
         // github pages settings: user, repo, branch
         github_settings: {
             host: 'https://api.github.com',
-            username: 'your-github-username',
-            repo: 'your-repository',
+            username: 'ranaroussi',
+            repo: 'textual.js',
             branch: 'gh-pages'
         },
 

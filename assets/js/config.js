@@ -14,7 +14,7 @@
         // default author (html/markdown allowed)
         author_name: 'Ran Aroussi',
         author_bio: 'Father. Husband, Entrepreneur. Technology Geek.',
-        author_avatar: 'http://aroussi.com/newsite/ran.jpg',
+        author_avatar: '',
 
         // site footer text (html/markdown allowed)
         site_footer: '&copy; ' + new Date().getFullYear() + ' All Rights Reserved. &nbsp; [Home](#) | [Sitemap](#sitemap)',
@@ -84,20 +84,20 @@
 
         // ---------------------------------
         // for parsing oembeds tags as inline social widgets
-        iframely_apikey: '', // 327c2506bc062a7d2a392e
+        iframely_apikey: '',
 
         // ---------------------------------
         // for github hosted (via github pages):
         // ---------------------------------
 
         // use github pages
-        github_mode: false,
+        github_mode: true,
 
         // github pages settings: user, repo, branch
         github_settings: {
             host: 'https://api.github.com',
-            username: 'your-github-username',
-            repo: 'your-repository',
+            username: 'ranaroussi',
+            repo: 'textual.js',
             branch: 'gh-pages'
         },
 
