@@ -9,7 +9,7 @@ PHP, Ruby, Node.js, etc.
 It uses [jQuery](https://jquery.com) and a slightly modified [Marked](https://github.com/chjj/marked)
 for HTML rendering, and the default theme was inspired by the [Casper](https://github.com/TryGhost/Casper) theme.
 
-[Check out the demo site »](http://textualjs.com/demo/)
+[Check out the demo site »](https://ranaroussi.github.io/textual.js/demo/)
 
 ---
 
