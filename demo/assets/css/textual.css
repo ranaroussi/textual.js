@@ -1,20 +1,20 @@
 /* Basic theme. Inspired by Poole (https://github.com/poole/poole) and ghost (https://ghost.org) */
-@import url('https://fonts.googleapis.com/css?family=Martel:300,700|PT+Sans+Narrow:400,700|Roboto+Mono:400,700');
+@import url('https://fonts.googleapis.com/css?family=PT+Serif:400,700|PT+Sans+Narrow:400,700|Roboto+Mono:400,700');
 
 html {
-    font-size: 18px;
-    font-size: 1.125rem;
-    line-height: 1.6;
-    font-family: Martel, Georgia, Times, serif;
+    font-size: 20px;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    font-family: "PT Serif", Georgia, Times, serif;
     font-weight: 300;
-    letter-spacing: -0.02rem;
+    letter-spacing: -0.025rem;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 body {
-    color: #444;
+    color: #454545;
     background-color: #fff;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
@@ -193,7 +193,7 @@ code, pre {
 }
 code {
     padding: .2em .25em;
-    /*font-size: 94%;*/
+    font-size: 92.5%;
     letter-spacing: -0.05rem;
     color: #bf616a;
     background-color: #f9f9f9;
