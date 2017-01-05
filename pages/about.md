@@ -7,7 +7,7 @@ tsitle: About About
 
 ![textual.js](assets/img/devices.jpg "Textual.js in action")
 
-**Textual.js** is client-side static website generator written in Javascipt that uses
+**Textual.js** is client-side static website generator written in Javascript that uses
 Markdown files to generate a website in real-time, without the need of server-side support for
 PHP, Ruby, Node.js, etc.
 
