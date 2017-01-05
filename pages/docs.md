@@ -11,7 +11,7 @@ title: Documentation
 - [Migration from Jekyll](#jekyll)
 - [Optional Headers](#headers)
 - [Template Elements](#template)
-- [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+- [Markdown Cheat Sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 
 ---
