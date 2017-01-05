@@ -201,6 +201,9 @@ code {
     /*-webkit-font-smoothing: subpixel-antialiased;*/
     /*-moz-osx-font-smoothing: auto;*/
 }
+code.lang-text {
+    background-color: #f9f9f9;
+}
 pre {
     display: block;
     margin-top: 0;

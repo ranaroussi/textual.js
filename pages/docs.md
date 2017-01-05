@@ -40,7 +40,7 @@ server {
     }
 }
 ```
-<div id="jekyll"></div>
+
 ### GitHub Mode
 
 1. Set `github_mode` in `assets/js/config.js` to `true`.
@@ -64,7 +64,6 @@ github_settings: {
 ---
 
 <a name="jekyll"></a>
-
 ## Migration from Jekyll
 
 Once **Textual.js** is installed and running, simply copy all of your posts from your Jekyll
