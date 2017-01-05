@@ -129,9 +129,9 @@ main ul {
     list-style-type: none;
 }
 main ul li:before {
-    font-size: 250%;
+    font-size: 200%;
     line-height: 1px;
-    margin: .9rem 0rem 0rem -1.25rem;
+    margin: .65rem 0rem 0rem -1.25rem;
     content: "\2022 ";
     position: absolute;
     color: rgba(50, 155, 205, .5);
