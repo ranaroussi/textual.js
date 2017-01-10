@@ -700,9 +700,20 @@ String.prototype.trim = String.prototype.trim || function(o) {
             }
 
             $(this).find("p img").each(function(){
-                $(this).parent().replaceWith(function() {
-                    return $("<figure/>").append($(this).contents());
-                });
+                // $(this).parent().replaceWith(function() {
+                //     return $("<figure/>").append($(this).contents());
+                // });
+
+                html = $(this).parent().clone();
+                html.find('img').remove();
+                var text = html.text();
+                if (text != "") {
+                    text = '<figcaption>'+ html.html() +'</figcaption>';
+                }
+                var figure = $("<figure>");
+                $(this).clone().appendTo(figure);
+                $(text).appendTo(figure);
+                $(this).parent().replaceWith(figure);
             });
         });
 
