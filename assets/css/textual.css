@@ -1,5 +1,5 @@
-/* Basic theme. Inspired by Poole (https://github.com/poole/poole) and ghost (https://ghost.org) */
-@import url('https://fonts.googleapis.com/css?family=PT+Serif:400,700|PT+Sans+Narrow:400,700|Roboto+Mono:400,700');
+/* Base theme for Textual.js */
+@import url('https://fonts.googleapis.com/css?family=PT+Serif:400,700|Fira+Sans:300,400,700|Roboto+Mono:400,700');
 
 html {
     font-size: 20px;
@@ -14,11 +14,11 @@ html {
     -moz-osx-font-smoothing: grayscale;
 }
 body {
-    color: #454545;
+    color: #4c4c4c;
     background-color: #fff;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
-    margin: 1rem .8rem;
+    margin: 0 .8rem;
 }
 .hidden {
     display: none !important;
@@ -80,17 +80,18 @@ a:hover, a:focus {
 }
 h1, h2, h3, h4, h5, h6 {
     margin-bottom: .5rem;
-    font-weight: bold;
+    font-weight: 700;
     line-height: 1.2;
     color: #313131;
-    font-family: "PT Sans Narrow", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Fira Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin-bottom: .5rem;
+    letter-spacing: -.065rem;
 }
 h1 {
     font-size: 2.75rem;
-    letter-spacing: -.04rem;
+    /*letter-spacing: -.075rem;*/
     margin-bottom: .5rem;
     margin-top: 0;
     line-height: 1;
@@ -146,8 +147,9 @@ hr {
     position: relative;
     margin: 1.5rem 0;
     border: 0;
-    border-top: 1px solid #f5f5f5;
-    border-bottom: 1px solid #fff
+    height: 1px;
+    border-top: 1px solid #f0f0f0;
+    background: #fff
 }
 hr:before {
     content: "";
@@ -165,7 +167,7 @@ hr:after {
     height: 7px;
     border-radius: 50%;
     background: #fff;
-    border: 1px solid #EBF2F6;
+    border: 1px solid #eee;
     display: block;
     position: relative;
     left: calc(50% - 4px);
@@ -268,18 +270,37 @@ blockquote p:last-child {
     }
 }
 figure, img {
-    text-align: center;
+    /*text-align: center;*/
     display: block;
     max-width: 100%;
     margin: 0 auto 1rem;
-    /*border-radius: 5px*/
 }
 figure img {
     max-width: 100%;
     margin: 0 auto 5px;
 }
+figure figcaption:after {
+    content: '\e800';
+    margin-left: 1px;
+    margin-right: 5px;
+    font-family: "fontello";
+    float: left;
+    font-size: 14px;
+    line-height: 15px;
+    zoom: .99;
+}
 figure {
-    font-size: 76%;
+    line-height: 15px;
+    font-size: 13px;
+    letter-spacing: 0;
+    font-family: "Fira Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    letter-spacing: -0.015rem;
+    color: #bbb;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+}
+figure a {
+    color: #6af;
 }
 table {
     margin-bottom: 1rem;
@@ -295,26 +316,16 @@ tbody tr:nth-child(odd) td,
 tbody tr:nth-child(odd) th {
     background-color: #f9f9f9
 }
-times {
-    font-family: "PT Sans Narrow", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-transform: uppercase;
-    padding-bottom: 1rem;
-    color: #aaa;
-    display: inline-block;
-    font-size: 72%;
-    letter-spacing: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
 .post-meta {
-    font-family: "PT Sans Narrow", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-family: "Fira Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-transform: uppercase;
     padding-bottom: 1rem;
-    color: #aaa;
-    font-size: 72%;
-    letter-spacing: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    color: #bbb;
+    font-size: 75%;
+    letter-spacing: -0.015rem;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
 }
 .post-meta .post-date, .post-meta .post-author, .post-meta .post-category, .post-meta .post-tags {
     display: inline-block;
@@ -353,14 +364,19 @@ times {
     margin: auto;
 }
 .master-header {
-    font-family: "PT Sans Narrow", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Fira Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background: #fff;
+    padding: .8rem .8rem .6rem .8rem;
+    border-bottom: 1px solid #f5f5f5;
+    margin: 0 -.8rem 2.5rem;
+    letter-spacing: -.05rem;
+    font-weight: 300;
 }
 .master-header .container {
-    padding-bottom: .8rem;
-    margin-bottom: 2.5rem;
-    border-bottom: 1px solid #f5f5f5;
+    padding: 0;
+    margin: 0 auto;
 }
 .cover-image {
     display: none;
@@ -371,43 +387,29 @@ times {
     background-size: cover;
     margin: calc(-2.5rem - 1px) -.8rem 3rem;
 }
-body.home .master-header .container {
+body.home .master-header {
     margin-bottom: 3rem;
 }
 body.home .cover-image {
     margin-top: calc(-3rem - 1px);
 }
-
-/*.cover-image:after {
-    content: '';
-    display: block;
-    padding-top: .5rem;
-    height: 100%;
-    background: rgba(255,255,255,.8);
-    background: -moz-linear-gradient(top, transparent 0%, #fff 90%);
-    background: -webkit-linear-gradient(top, transparent 0%,#fff 90%);
-    background: linear-gradient(to bottom, transparent 0%,#fff 90%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='transparent', endColorstr='#fff',GradientType=0 );
-}*/
 .master-header-title {
     margin-top: 0px;
     margin-bottom: 0;
     color: #505050;
     font-weight: bold;
     font-size: 140%;
+    font-weight: 700;
 }
 .master-header-tagline {
     margin-left: .25rem;
-    font-size: 92%;
-    font-weight: 400;
+    font-size: 86%;
+    font-weight: 300;
     color: #aaa;
-    /*font-family: Martel, Georgia, Times, serif;*/
-    /*font-size: 76%;*/
-    /*letter-spacing: -.5px;*/
 }
 .master-header nav.topnav {
-    font-size: 92%;
-    margin: .55rem 0 0;
+    font-size: 85%;
+    margin: .575rem 0 0;
     float: right;
 }
 .master-header nav.topnav ul {
@@ -424,30 +426,46 @@ body.home .cover-image {
 .master-header nav.topnav ul li a {
     color: #aaa;
 }
+.master-header nav.topnav ul li a strong {
+    font-weight: 700;
+    letter-spacing: -.025rem;
+}
 .master-header nav.topnav ul li:last-of-type {
     padding: 0;
 }
 .master-footer {
+    font-family: "Fira Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 72%;
     margin: 5rem auto 2rem;
-    color: #999;
+    color: #aaa;
+    border-top: 1px solid #f2f2f2;
 }
+.master-footer:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid #fff;
+    margin-bottom: 1rem;
+}
+
 .master-footer a {
     color: inherit;
 }
 nav.pagination a {
-    border: 1px solid #ddd;
+    font-weight: 300;
+    border: 1px solid #e5e5e5;
     text-decoration: none;
     border-radius: 3px;
-    font-family: "PT Sans Narrow", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Fira Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1;
     padding: .6rem .5rem .5rem;
     text-transform: uppercase;
-    color: #999;
+    color: #bbb;
     display: inline-block;
     font-size: 72%;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    /*-webkit-font-smoothing: antialiased;*/
+    /*-moz-osx-font-smoothing: grayscale;*/
 }
 nav.pagination a:hover {
     background: #f9f9f9;
@@ -481,13 +499,14 @@ nav.pagination a.pagination-newer {
     width: 30%;
 }
 .post-footer .post-author, .post-footer h3 {
-    font-family: "PT Sans Narrow", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Fira Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #000;
     font-weight: bold;
     font-size: 1rem;
     line-height: 1;
     margin: 0;
     padding: 0;
+    letter-spacing: -0.025rem;
 }
 .post-author a {
     color: inherit;

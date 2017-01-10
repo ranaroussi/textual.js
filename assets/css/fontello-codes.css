@@ -1,3 +1,4 @@
+.icon-camera:before { content: '\e800'; } /* '' */
 .icon-menu:before { content: '\f0c9'; } /* '' */
 .icon-github:before { content: '\f300'; } /* '' */
 .icon-gplus:before { content: '\f0d4'; } /* '' */
