@@ -111,6 +111,8 @@ Below items should reside within `<header class="master-header">`:
 
 - `.master-header-title`
 - `.master-header-tagline`
+- `.topnav`
+- `.topnav-drawer`
 
 Outside of `<header class="master-header">`:
 

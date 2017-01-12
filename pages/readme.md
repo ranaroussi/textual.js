@@ -3,12 +3,12 @@ layout: page
 author: Ran Aroussi
 ---
 
-# ->Javascript Static Website Generator<-
+# ->Javascript Website Generator<-
 ->T e x t u a l . j s<-
 
 ![textual.js](assets/img/devices.png "Textual.js in action")
 
-**Textual.js** is client-side static website generator written in Javascript that uses
+**Textual.js** is client-side *static website generator* written in Javascript that uses
 Markdown files to generate a website in real-time, without the need of server-side support for
 PHP, Ruby, Node.js, etc.
 
