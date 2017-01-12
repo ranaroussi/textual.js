@@ -1,5 +1,5 @@
 /* Base theme for Textual.js */
-@import url('https://fonts.googleapis.com/css?family=PT+Serif:400,700|Fira+Sans:300,400,700|Roboto+Mono:400,700');
+@import url('https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700,700i|Fira+Sans:300,400,700|Roboto+Mono:400,700');
 
 html {
     font-size: 20px;
@@ -87,11 +87,11 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin-bottom: .5rem;
-    letter-spacing: -.065rem;
+    letter-spacing: -.04rem;
 }
 h1 {
     font-size: 2.75rem;
-    /*letter-spacing: -.075rem;*/
+    letter-spacing: -.06rem;
     margin-bottom: .5rem;
     margin-top: 0;
     line-height: 1;
@@ -269,6 +269,9 @@ blockquote p:last-child {
         padding-left: 1.25rem
     }
 }
+figure {
+    overflow: auto;
+}
 figure, img {
     /*text-align: center;*/
     display: block;
@@ -277,19 +280,19 @@ figure, img {
 }
 figure img {
     max-width: 100%;
-    margin: 0 auto 5px;
+    margin: 0 auto 6px;
 }
-figure figcaption:after {
+figure figcaption:before {
     content: '\e800';
     margin-left: 1px;
     margin-right: 5px;
     font-family: "fontello";
     float: left;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 15px;
-    zoom: .99;
+    margin-top: -1px;
 }
-figure {
+figure figcaption {
     line-height: 15px;
     font-size: 13px;
     letter-spacing: 0;
@@ -300,7 +303,8 @@ figure {
     -moz-osx-font-smoothing: auto;
 }
 figure a {
-    color: #6af;
+    /*color: #6af;*/
+    color: inherit;
 }
 table {
     margin-bottom: 1rem;
@@ -309,7 +313,7 @@ table {
     border-collapse: collapse
 }
 td, th {
-    padding: .25rem .5rem;
+    padding: .6rem;
     border: 1px solid #e5e5e5
 }
 tbody tr:nth-child(odd) td,
@@ -368,7 +372,7 @@ tbody tr:nth-child(odd) th {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: #fff;
-    padding: .8rem .8rem .6rem .8rem;
+    padding: .8rem .8rem .8rem .8rem;
     border-bottom: 1px solid #f5f5f5;
     margin: 0 -.8rem 2.5rem;
     letter-spacing: -.05rem;
@@ -407,6 +411,9 @@ body.home .cover-image {
     font-weight: 300;
     color: #aaa;
 }
+.master-header nav.topnav .topnav-drawer {
+    display: none;
+}
 .master-header nav.topnav {
     font-size: 85%;
     margin: .575rem 0 0;
@@ -416,6 +423,7 @@ body.home .cover-image {
     margin: 0;
     padding: 0;
     list-style: none;
+    display: block;
 }
 .master-header nav.topnav ul li {
     float: left;
@@ -459,7 +467,7 @@ nav.pagination a {
     border-radius: 3px;
     font-family: "Fira Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1;
-    padding: .6rem .5rem .5rem;
+    padding: .6rem .5rem .55rem;
     text-transform: uppercase;
     color: #bbb;
     display: inline-block;
@@ -630,5 +638,51 @@ h1.post-title a, h1.page-title a {
         max-height: 250px;
         margin-bottom: 2rem;
     }
-}
 
+    .post-footer .share-icon {
+        display: block;
+        font-size: 140%;
+    }
+
+    /* --- mobile menu --- */
+    .master-header nav.topnav ul {
+        display: none;
+    }
+    .master-header-tagline {
+        display: block;
+        padding: 0;
+        margin: -.2rem 0 0 0;
+        /*font-size: 72%;*/
+        letter-spacing: -0.025rem;
+    }
+    .master-header nav.topnav ul li,
+    .master-header nav.topnav ul li:last-of-type {
+        float: none;
+        display: block;
+        padding: .8rem .8rem;
+        border-top: 1px solid #f5f5f5;
+    }
+    .master-header nav.topnav ul li a {
+        display: block;
+        -webkit-font-smoothing: subpixel-antialiased;
+        -moz-osx-font-smoothing: auto;
+        letter-spacing: -0.025rem;
+    }
+    .master-header nav.topnav {
+        width: calc(100% + 1.6rem);
+        margin: .6rem -.8rem 0;
+        margin-bottom: calc(-.8rem + 1px);
+        padding: 0;
+    }
+    .master-header nav.topnav .topnav-drawer {
+        display: block;
+        border: 1px solid rgba(0,0,0,.25);
+        padding: 1px 2px 0 2px;
+        border-radius: 3px;
+        position: absolute;
+        right: .8rem;
+        top: 1.25rem;
+        font-size: 150%;
+    }
+    /* --- /mobile menu --- */
+}

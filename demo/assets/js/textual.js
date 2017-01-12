@@ -699,6 +699,12 @@ String.prototype.trim = String.prototype.trim || function(o) {
                 $(this).parse_oembeds();
             }
 
+            $(this).find("table").each(function(){
+                var figure = $("<figure>");
+                $(this).clone().appendTo(figure);
+                $(this).replaceWith(figure);
+            });
+
             $(this).find("p img").each(function(){
                 // $(this).parent().replaceWith(function() {
                 //     return $("<figure/>").append($(this).contents());
@@ -898,7 +904,7 @@ String.prototype.trim = String.prototype.trim || function(o) {
                 $("header.master-header small.master-header-tagline")[0].append($(marked($tjs.config.site_tagline)).html());
 
                 // format navigation
-                var navigation = $("<ul>");
+                var navigation = $('<ul>');
                 for (var i = 0; i < $tjs.config.site_navigation.length; i++) {
                     var li = $("<li>")
                     var item = $tjs.config.site_navigation[i];
@@ -909,7 +915,7 @@ String.prototype.trim = String.prototype.trim || function(o) {
                     }
                     navigation.append(li);
                 }
-                $("header.master-header nav").append(navigation);
+                $("header.master-header nav").append('<span class="topnav-drawer icon-menu"></span>'+navigation.outerHTML());
                 if (i == 0) {
                     $("header.master-header nav").remove();
                 }
@@ -917,6 +923,11 @@ String.prototype.trim = String.prototype.trim || function(o) {
                 // format footer
                 $(".master-footer-content").append($(marked($tjs.config.site_footer)).html());
                 $(".site-credit").append(marked($tjs.config.app_credit));
+
+                // mobile menu
+                $(".master-header nav.topnav .topnav-drawer").bind('touchstart', function(){
+                    $(".master-header nav.topnav ul").slideToggle();
+                });
 
                 // render content
                 setTimeout($tjs.renderURL(), 100);
