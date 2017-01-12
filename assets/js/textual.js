@@ -525,6 +525,8 @@ String.prototype.trim = String.prototype.trim || function(o) {
 
                 // ----------------------------------
                 if (folder == "author" || folder == "category" || folder == "tag") {
+                    bodyclass = folder;
+
                     // build other collecion
                     buildAllCollections();
 
@@ -642,6 +644,7 @@ String.prototype.trim = String.prototype.trim || function(o) {
         set_open_graph("twitter:card", "summary_large_image");
 
         // add to page
+        $(".home-only, .post-only, .page-only, .sitemap-only, .error-only, .author-only, .tag-only, .category-only").hide();
         $("main").fadeOut('fast', function() {
             $(".cover-image").first().hide().css('background-image', '');
             if (coverimage !== "") {
@@ -653,9 +656,13 @@ String.prototype.trim = String.prototype.trim || function(o) {
                 .removeClass('page')
                 .removeClass('sitemap')
                 .removeClass('error')
+                .removeClass('author')
+                .removeClass('category')
+                .removeClass('tag')
                 .addClass(bodyclass);
 
             $("main").html(html).fadeIn();
+            $("."+bodyclass+"-only").fadeIn();
 
             localize();
 

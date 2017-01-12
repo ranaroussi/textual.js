@@ -145,11 +145,17 @@ dd {
 }
 hr {
     position: relative;
-    margin: 1.5rem 0;
+    margin: 1.5rem 0 2.5rem;
     border: 0;
     height: 1px;
     border-top: 1px solid #f0f0f0;
     background: #fff
+}
+body.home .post:last-of-type hr ,
+body.author .post:last-of-type hr ,
+body.category .post:last-of-type hr ,
+body.tag .post:last-of-type hr {
+    display: none;
 }
 hr:before {
     content: "";
@@ -460,6 +466,13 @@ body.home .cover-image {
 .master-footer a {
     color: inherit;
 }
+
+nav.pagination {
+    border-top: 1px solid #f0f0f0;
+    margin-top: 1.5rem;
+    padding-top: 2rem;
+}
+
 nav.pagination a {
     font-weight: 300;
     border: 1px solid #e5e5e5;
@@ -539,6 +552,7 @@ nav.pagination a.pagination-newer {
     display: block;
     color: #999;
     font-size: 86%;
+    line-height: 1.2;
 }
 .post-footer .share-icon, .post-footer .share-icon:hover {
     font-size: 120%;
@@ -590,7 +604,7 @@ h1.post-title a, h1.page-title a {
     padding-top: 1px;
     margin: 0px 0 -4.5rem;
     padding-bottom: 2rem;
-    background: #fff;
+    /*background: #fff;*/
 }
 .author-page-avatar img {
     border-radius: 50%;
@@ -627,7 +641,8 @@ h1.post-title a, h1.page-title a {
         font-size: 1.125rem;
     }
     h1 {
-        zoom: .72;
+        zoom: .64;
+        letter-spacing: -0.04rem;
     }
     .master-header nav.topnav {
         float: none;
@@ -639,10 +654,43 @@ h1.post-title a, h1.page-title a {
         margin-bottom: 2rem;
     }
 
-    .post-footer .share-icon {
-        display: block;
-        font-size: 140%;
+    .master-footer {
+        text-align: center;
     }
+    body.post .master-footer {
+        margin-top: 2.5rem;
+    }
+    .post-footer {
+        text-align: center;
+        padding-top: 2.5rem;
+    }
+    .post-footer .post-avatar img {
+        float: none;
+        margin-right: auto !important;
+        margin-left: auto !important;
+        margin-bottom: .5rem !important;
+    }
+    .post-footer .post-author-info,
+    .post-footer .post-share {
+        display: block;
+        width: 100%;
+    }
+    .post-footer .post-share {
+        clear: both;
+        padding-top: 1rem;
+        float: none;
+        text-align: center;
+        display: block;
+        width: 100%;
+    }
+    .post-footer .share-icon h3 {
+        font-size: 82%;
+    }
+    .post-footer .share-icon {
+        font-size: 140%;
+        margin: 0;
+    }
+
 
     /* --- mobile menu --- */
     .master-header nav.topnav ul {
