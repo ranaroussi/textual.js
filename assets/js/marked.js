@@ -635,9 +635,10 @@
     function marked(src, opt) {
         // oembeds
         src = src.replace(/(.*?[^`])\[\>\](https|http):\/\/(.*?)(\s|$)/gim,
-            "$1 <oembed src=\"$2://$3\">$2://$3</oembed> $4")
+            "$1 <oembed src=\"$2://$3\">$2://$3</oembed> $4");
 
-        src = src.replace(/->(.*?)<-/g, "<center>$1</center>")
+        src = src.replace(/(^|\n)(~+)($|\n)/g, '\n<div class="print-page-break"></div>\n');
+        src = src.replace(/->(.*?)<-/g, "<center>$1</center>");
 
         try {
             if (opt) opt = merge({}, marked.defaults, opt);
