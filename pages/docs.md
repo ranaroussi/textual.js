@@ -84,7 +84,8 @@ Below are the supported headers. **All headers are OPTIONAL!**
 
 ```text
 ---
-title:         title of Post/Page (if different from document's first H1 element)
+title:         title of Post/Page (if different from docs's first H1 element)
+lead:          sub-head of the postpage
 author:        author name (if different than config's author_name)
 author_bio:    author bio (if different than config's author_bio)
 author_avatar: author avatar URL (if different than config's author_avatar)
@@ -159,6 +160,7 @@ Below items should reside within `<section class="page-header">`:
 Below items should reside within `<article class="page">`:
 
 - `.page-title`
+- `.page-lead`
 - `.page-content`
 
 ### Post Classes
@@ -166,6 +168,7 @@ Below items should reside within `<article class="page">`:
 Below items should reside within `<article class="post">`:
 
 - `.post-title`
+- `.post-lead`
 - `.post-meta`
 - `.post-date`
 - `.post-author`
@@ -186,5 +189,20 @@ Below items should reside within `<div class="error">`:
 
 - `.error-title`
 - `.error-text`
+
+### Special Classes
+
+To allow for more customization, you can add elements with the
+following classs to your templete and have them displyed only
+on the relevant view type:
+
+- `.home-only`
+- `.post-only`
+- `.page-only`
+- `.sitemap-only`
+- `.error-only`
+- `.author-only`
+- `.tag-only`
+- `.category-only`
 
 ###### [return to top](#top)
