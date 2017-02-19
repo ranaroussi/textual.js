@@ -710,25 +710,32 @@ String.prototype.trim = String.prototype.trim || function(o) {
             });
 
 
-            $('.post-content, .page-content').each(function(){
-                // convert emails to links
-                // $(this).html($(this).html().replace(
-                //     /([a-z0-9._-]+@[a-z0-9.-]+\.[a-z]{2,4})/ig,
-                //     "<a href='mailto:$1'>$1</a>"));
+            if ($tjs.config.text_direction != "rtl") {
+                $('.post-lead, .page-lead, .post-content, .page-content').each(function(){
+                    // convert emails to links
+                    // $(this).html($(this).html().replace(
+                    //     /([a-z0-9._-]+@[a-z0-9.-]+\.[a-z]{2,4})/ig,
+                    //     "<a href='mailto:$1'>$1</a>"));
 
-                // replace quotes to curly quotes
-                var codes = $(this).find('code');
-                if ($tjs.config.text_direction != "rtl") {
+                    // replace quotes to curly quotes
+                    var codes = $(this).find('code');
                     $(this).html($(this).html().replace(/>([^>]+)</g, function(r) {
                         return r.replace(/(>|\s)"/g, "$1“").replace(/"/g, "”")
                             .replace(/("|\s)'/g, "$1‘").replace(/'/g, "’");
                     }));
-                }
-                // un-curly quotes code blocks
-                $(this).find('code').each(function(index){
-                    $(this).replaceWith(codes[index]);
-                })
-            });
+                    // un-curly quotes code blocks
+                    $(this).find('code').each(function(index){
+                        $(this).replaceWith(codes[index]);
+                    })
+                });
+
+                $('h1, h2').each(function(){
+                    $(this).html($(this).html().replace(/>([^>]+)</g, function(r) {
+                        return r.replace(/(>|\s)"/g, "$1“").replace(/"/g, "”")
+                            .replace(/("|\s)'/g, "$1‘").replace(/'/g, "’");
+                    }));
+                });
+            }
 
 
             // oembeds
