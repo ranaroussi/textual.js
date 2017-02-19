@@ -19,6 +19,10 @@ String.prototype.trim = String.prototype.trim || function(o) {
 
 ;(function($tjs, window, document, undefined) {
 
+    // callbacks
+    $tjs.onAppLoadCallback = function(){}
+    $tjs.onPageLoadCallback = function(){}
+
     $tjs.posts = {};
     $tjs.pages = {};
     $tjs.authors = {};
