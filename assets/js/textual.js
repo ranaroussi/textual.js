@@ -188,6 +188,7 @@ String.prototype.trim = String.prototype.trim || function(o) {
             error: function(xhr, ajaxOptions, thrownError) {
                 if (xhr.status == 404) {
                     file.title = thrownError;
+                    file.lead = "";
                     file.excerpt = "Cannot retrieve this content at this time.";
                     file.body = file.excerpt;
                     file.date = "";
@@ -221,6 +222,12 @@ String.prototype.trim = String.prototype.trim || function(o) {
                     }
                 } catch (err) {
                     file.title = "Untitled";
+                }
+
+                try {
+                    file.lead = marked(meta.split("lead:")[1].split("\n")[0].trim());
+                } catch (err) {
+                    file.lead = "";
                 }
 
                 try{ file.meta.layout = meta.split("layout:")[1].split("\n")[0].trim(); }catch(err){}
@@ -279,6 +286,7 @@ String.prototype.trim = String.prototype.trim || function(o) {
         if (kind != "" && kind != "page") { kind = "post"; }
 
         html.find("." + kind + '-title').html('<a href="#' + content.slug + '">' + marked(content.title) + '</a>');
+
         try {
             html.find("." + kind + '-date').html(formatDate(content.meta.date));
             html.find("." + kind + '-date').attr('datetime', formatDate(content.meta.date, 'datetime'));
@@ -334,6 +342,7 @@ String.prototype.trim = String.prototype.trim || function(o) {
             if (i > 0) { html.find("." + kind + '-tags').html(list.outerHTML()); }
         }catch(err){}
 
+        html.find("." + kind + '-lead').html(content.lead);
         html.find("." + kind + '-content').html(content.content);
         // html.find('.site-author').html($(marked($tjs.config.author_name)).html());
         // html.find('.site-bio').html($(marked($tjs.config.author_bio)).html());
@@ -594,7 +603,7 @@ String.prototype.trim = String.prototype.trim || function(o) {
 
                 for (var i = nav_start; i < nav_end; i++) {
                     var post = getFileContent(total_posts[i]);
-                    post.content = post.excerpt;
+                    post.content = post.lead || post.excerpt;
                     html += renderTemplate(post, "main").outerHTML();
                 }
 
