@@ -981,6 +981,8 @@ String.prototype.trim = String.prototype.trim || function(o) {
             });
             });
         });
+
+        $tjs.onAppLoadCallback();
     }
 
 }(window.$tjs = window.$tjs || {}, window, document));
