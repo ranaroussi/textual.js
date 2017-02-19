@@ -12,16 +12,17 @@
         site_title: 'Textual.js',
 
         // default author (html/markdown allowed)
-        author_name: 'Your Name',
-        author_bio: 'Short Bio About You',
-        author_avatar: 'assets/img/author1.jpg',
+        author_name: 'Ran Aroussi',
+        author_bio: 'Father. Husband, Entrepreneur. Technology Geek.',
+        author_avatar: '',
 
         // site footer text (html/markdown allowed)
         site_footer: '&copy; ' + new Date().getFullYear() + ' All Rights Reserved. &nbsp; [Home](#) | [Sitemap](#sitemap)',
 
         // site navigation items (markdown allowed)
         site_navigation: [
-            'About',
+            'Docs',
+            '[Demo](./demo/)',
             '[Github](https://github.com/ranaroussi/textual.js)'
         ],
 
@@ -35,10 +36,10 @@
         homepage_cover_image: '',
 
         // page as homepage - leave blank ('') for blog style
-        homepage: '',
+        homepage: 'readme',
 
         // your google analytics code
-        google_analytics_code: 'UA-XXXXXXX-2',
+        google_analytics_code: 'UA-89785231-1',
 
         // facebook app (used in comments and open-graph)
         facebook_app_id: '',
@@ -97,8 +98,8 @@
         // github pages settings: user, repo, branch
         github_settings: {
             host: 'https://api.github.com',
-            username: 'your-github-username',
-            repo: 'your-repository',
+            username: 'ranaroussi',
+            repo: 'textual.js',
             branch: 'gh-pages'
         },
 

@@ -19,6 +19,10 @@ String.prototype.trim = String.prototype.trim || function(o) {
 
 ;(function($tjs, window, document, undefined) {
 
+    // callbacks
+    $tjs.onAppLoadCallback = function(){}
+    $tjs.onPageLoadCallback = function(){}
+
     $tjs.posts = {};
     $tjs.pages = {};
     $tjs.authors = {};
@@ -184,6 +188,7 @@ String.prototype.trim = String.prototype.trim || function(o) {
             error: function(xhr, ajaxOptions, thrownError) {
                 if (xhr.status == 404) {
                     file.title = thrownError;
+                    file.lead = "";
                     file.excerpt = "Cannot retrieve this content at this time.";
                     file.body = file.excerpt;
                     file.date = "";
@@ -217,6 +222,12 @@ String.prototype.trim = String.prototype.trim || function(o) {
                     }
                 } catch (err) {
                     file.title = "Untitled";
+                }
+
+                try {
+                    file.lead = marked(meta.split("lead:")[1].split("\n")[0].trim());
+                } catch (err) {
+                    file.lead = "";
                 }
 
                 try{ file.meta.layout = meta.split("layout:")[1].split("\n")[0].trim(); }catch(err){}
@@ -275,6 +286,7 @@ String.prototype.trim = String.prototype.trim || function(o) {
         if (kind != "" && kind != "page") { kind = "post"; }
 
         html.find("." + kind + '-title').html('<a href="#' + content.slug + '">' + marked(content.title) + '</a>');
+
         try {
             html.find("." + kind + '-date').html(formatDate(content.meta.date));
             html.find("." + kind + '-date').attr('datetime', formatDate(content.meta.date, 'datetime'));
@@ -330,6 +342,7 @@ String.prototype.trim = String.prototype.trim || function(o) {
             if (i > 0) { html.find("." + kind + '-tags').html(list.outerHTML()); }
         }catch(err){}
 
+        html.find("." + kind + '-lead').html(content.lead);
         html.find("." + kind + '-content').html(content.content);
         // html.find('.site-author').html($(marked($tjs.config.author_name)).html());
         // html.find('.site-bio').html($(marked($tjs.config.author_bio)).html());
@@ -366,9 +379,26 @@ String.prototype.trim = String.prototype.trim || function(o) {
         var text = encodeURIComponent(item.title);
         var link = encodeURIComponent(window.location.href);
         html.find(".post-footer .share-icon.icon-twitter").attr("href", "https://twitter.com/share?text="+text+"&url="+link);
-        html.find(".post-footer .share-icon.icon-facebook").attr("href", "https://www.facebook.com/sharer/sharer.php?u="+link);
+        html.find(".post-footer .share-icon.icon-facebook").attr("href", buildFacebookShareLink(item));
         html.find(".post-footer .share-icon.icon-gplus").attr("href", "https://plus.google.com/share?url="+link);
         return html;
+    }
+
+    function buildFacebookShareLink(item) {
+        // https://apps.lazza.dk/facebook/
+        var picture = coverimage || $(".post-content img").attr('src') || $(".page-content img").attr('src');
+        if (picture) {
+            picture = encodeURIComponent(get_full_image_url(picture));
+        }
+        var params = {
+            "u": encodeURIComponent(window.location.href),
+            "picture": picture,
+            "title": encodeURIComponent(item.title),
+            "caption": $tjs.config.site_name,
+            "description": $(marked(item.excerpt)).text(),
+            "quote": "",
+        }
+        return "https://www.facebook.com/sharer/sharer.php?"+$.param(params).replace(/%20/g, "+");
     }
 
     function scrollToAnchor(anchor) {
@@ -525,6 +555,8 @@ String.prototype.trim = String.prototype.trim || function(o) {
 
                 // ----------------------------------
                 if (folder == "author" || folder == "category" || folder == "tag") {
+                    bodyclass = folder;
+
                     // build other collecion
                     buildAllCollections();
 
@@ -588,7 +620,7 @@ String.prototype.trim = String.prototype.trim || function(o) {
 
                 for (var i = nav_start; i < nav_end; i++) {
                     var post = getFileContent(total_posts[i]);
-                    post.content = post.excerpt;
+                    post.content = post.lead || post.excerpt;
                     html += renderTemplate(post, "main").outerHTML();
                 }
 
@@ -642,6 +674,7 @@ String.prototype.trim = String.prototype.trim || function(o) {
         set_open_graph("twitter:card", "summary_large_image");
 
         // add to page
+        $(".home-only, .post-only, .page-only, .sitemap-only, .error-only, .author-only, .tag-only, .category-only").hide();
         $("main").fadeOut('fast', function() {
             $(".cover-image").first().hide().css('background-image', '');
             if (coverimage !== "") {
@@ -653,9 +686,13 @@ String.prototype.trim = String.prototype.trim || function(o) {
                 .removeClass('page')
                 .removeClass('sitemap')
                 .removeClass('error')
+                .removeClass('author')
+                .removeClass('category')
+                .removeClass('tag')
                 .addClass(bodyclass);
 
             $("main").html(html).fadeIn();
+            $("."+bodyclass+"-only").fadeIn();
 
             localize();
 
@@ -673,31 +710,44 @@ String.prototype.trim = String.prototype.trim || function(o) {
             });
 
 
-            $('.post-content, .page-content').each(function(){
-                // convert emails to links
-                // $(this).html($(this).html().replace(
-                //     /([a-z0-9._-]+@[a-z0-9.-]+\.[a-z]{2,4})/ig,
-                //     "<a href='mailto:$1'>$1</a>"));
+            if ($tjs.config.text_direction != "rtl") {
+                $('.post-lead, .page-lead, .post-content, .page-content').each(function(){
+                    // convert emails to links
+                    // $(this).html($(this).html().replace(
+                    //     /([a-z0-9._-]+@[a-z0-9.-]+\.[a-z]{2,4})/ig,
+                    //     "<a href='mailto:$1'>$1</a>"));
 
-                // replace quotes to curly quotes
-                var codes = $(this).find('code');
-                if ($tjs.config.text_direction != "rtl") {
+                    // replace quotes to curly quotes
+                    var codes = $(this).find('code');
                     $(this).html($(this).html().replace(/>([^>]+)</g, function(r) {
                         return r.replace(/(>|\s)"/g, "$1“").replace(/"/g, "”")
                             .replace(/("|\s)'/g, "$1‘").replace(/'/g, "’");
                     }));
-                }
-                // un-curly quotes code blocks
-                $(this).find('code').each(function(index){
-                    $(this).replaceWith(codes[index]);
-                })
-            });
+                    // un-curly quotes code blocks
+                    $(this).find('code').each(function(index){
+                        $(this).replaceWith(codes[index]);
+                    })
+                });
+
+                $('h1, h2').each(function(){
+                    $(this).html($(this).html().replace(/>([^>]+)</g, function(r) {
+                        return r.replace(/(>|\s)"/g, "$1“").replace(/"/g, "”")
+                            .replace(/("|\s)'/g, "$1‘").replace(/'/g, "’");
+                    }));
+                });
+            }
 
 
             // oembeds
             if (folder != '' && folder != '!' && $.parse_oembeds) {
                 $(this).parse_oembeds();
             }
+
+            $(this).find("table").each(function(){
+                var figure = $("<figure>");
+                $(this).clone().appendTo(figure);
+                $(this).replaceWith(figure);
+            });
 
             $(this).find("p img").each(function(){
                 // $(this).parent().replaceWith(function() {
@@ -715,6 +765,15 @@ String.prototype.trim = String.prototype.trim || function(o) {
                 $(text).appendTo(figure);
                 $(this).parent().replaceWith(figure);
             });
+
+            // mobile image zoom
+            $('figure img').bind('click', function(){
+                if ($(this).parent().is('figure')) {
+                    $(this).parent().toggleClass("fullpage");
+                }
+            });
+
+            $tjs.onPageLoadCallback();
         });
 
 
@@ -898,7 +957,7 @@ String.prototype.trim = String.prototype.trim || function(o) {
                 $("header.master-header small.master-header-tagline")[0].append($(marked($tjs.config.site_tagline)).html());
 
                 // format navigation
-                var navigation = $("<ul>");
+                var navigation = $('<ul>');
                 for (var i = 0; i < $tjs.config.site_navigation.length; i++) {
                     var li = $("<li>")
                     var item = $tjs.config.site_navigation[i];
@@ -909,7 +968,7 @@ String.prototype.trim = String.prototype.trim || function(o) {
                     }
                     navigation.append(li);
                 }
-                $("header.master-header nav").append(navigation);
+                $("header.master-header nav").append('<span class="topnav-drawer icon-menu"></span>'+navigation.outerHTML());
                 if (i == 0) {
                     $("header.master-header nav").remove();
                 }
@@ -918,12 +977,19 @@ String.prototype.trim = String.prototype.trim || function(o) {
                 $(".master-footer-content").append($(marked($tjs.config.site_footer)).html());
                 $(".site-credit").append(marked($tjs.config.app_credit));
 
+                // mobile menu
+                $(".master-header nav.topnav .topnav-drawer").bind('touchstart', function(){
+                    $(".master-header nav.topnav ul").slideToggle();
+                });
+
                 // render content
                 setTimeout($tjs.renderURL(), 100);
                 $(window).on('hashchange', $tjs.renderURL);
             });
             });
         });
+
+        $tjs.onAppLoadCallback();
     }
 
 }(window.$tjs = window.$tjs || {}, window, document));
