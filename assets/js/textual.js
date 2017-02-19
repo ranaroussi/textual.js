@@ -379,9 +379,26 @@ String.prototype.trim = String.prototype.trim || function(o) {
         var text = encodeURIComponent(item.title);
         var link = encodeURIComponent(window.location.href);
         html.find(".post-footer .share-icon.icon-twitter").attr("href", "https://twitter.com/share?text="+text+"&url="+link);
-        html.find(".post-footer .share-icon.icon-facebook").attr("href", "https://www.facebook.com/sharer/sharer.php?u="+link);
+        html.find(".post-footer .share-icon.icon-facebook").attr("href", buildFacebookShareLink(item));
         html.find(".post-footer .share-icon.icon-gplus").attr("href", "https://plus.google.com/share?url="+link);
         return html;
+    }
+
+    function buildFacebookShareLink(item) {
+        // https://apps.lazza.dk/facebook/
+        var picture = coverimage || $(".post-content img").attr('src') || $(".page-content img").attr('src');
+        if (picture) {
+            picture = encodeURIComponent(get_full_image_url(picture));
+        }
+        var params = {
+            "u": encodeURIComponent(window.location.href),
+            "picture": picture,
+            "title": encodeURIComponent(item.title),
+            "caption": $tjs.config.site_name,
+            "description": $(marked(item.excerpt)).text(),
+            "quote": "",
+        }
+        return "https://www.facebook.com/sharer/sharer.php?"+$.param(params).replace(/%20/g, "+");
     }
 
     function scrollToAnchor(anchor) {
