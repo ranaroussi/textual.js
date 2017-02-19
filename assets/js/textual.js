@@ -741,6 +741,15 @@ String.prototype.trim = String.prototype.trim || function(o) {
                 $(text).appendTo(figure);
                 $(this).parent().replaceWith(figure);
             });
+
+            // mobile image zoom
+            $('figure img').bind('click', function(){
+                if ($(this).parent().is('figure')) {
+                    $(this).parent().toggleClass("fullpage");
+                }
+            });
+
+            $tjs.onPageLoadCallback();
         });
 
 
