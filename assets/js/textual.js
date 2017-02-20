@@ -637,7 +637,9 @@ String.prototype.trim = String.prototype.trim || function(o) {
                     pagination.find('.pagination-newer').removeClass('hidden');
                     // console.log('newer');
                 }
-                html += pagination.outerHTML();
+                if (reqPagination < total_pages || reqPagination > 1) {
+                    html += pagination.outerHTML();
+                }
             }
         }
 
