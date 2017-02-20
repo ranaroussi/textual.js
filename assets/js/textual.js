@@ -989,9 +989,11 @@ String.prototype.trim = String.prototype.trim || function(o) {
                 setTimeout($tjs.renderURL(), 100);
                 $(window).on('hashchange', $tjs.renderURL);
 
-                $("a").click(function(){
-                    $(".master-header nav.topnav ul").hide()
-                });
+                if ($('.master-header nav.topnav .topnav-drawer').css('display') == "block") {
+                    $("a").click(function(){
+                        $(".master-header nav.topnav ul").hide()
+                    });
+                }
             });
             });
         });
