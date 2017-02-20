@@ -620,6 +620,8 @@ body.post .post-content {
 .page-header {
     text-align: center;
     border-bottom: 1px solid #f5f5f5;
+}
+.author .page-header {
     padding-bottom: 2rem;
     margin-bottom: 3rem;
 }
@@ -772,6 +774,13 @@ body.post .post-content {
 }
 
 
+.valign-outer {
+    display: table;
+}
+.valign-inner {
+    display: table-cell;
+    vertical-align: middle;
+}
 .print-only {
     display: none;
 }
