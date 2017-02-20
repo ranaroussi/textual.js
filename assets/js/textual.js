@@ -388,14 +388,14 @@ String.prototype.trim = String.prototype.trim || function(o) {
         // https://apps.lazza.dk/facebook/
         var picture = coverimage || $(".post-content img").attr('src') || $(".page-content img").attr('src');
         if (picture) {
-            picture = encodeURIComponent(get_full_image_url(picture));
+            picture = get_full_image_url(picture);
         }
         var params = {
-            "u": encodeURIComponent(window.location.href),
+            "u": window.location.href,
             "picture": picture,
-            "title": encodeURIComponent(item.title),
+            "title": item.title,
             "caption": $tjs.config.site_name,
-            "description": $(marked(item.excerpt)).text(),
+            "description": $(marked(item.lead || item.excerpt)).text(),
             "quote": "",
         }
         return "https://www.facebook.com/sharer/sharer.php?"+$.param(params).replace(/%20/g, "+");
@@ -942,6 +942,7 @@ String.prototype.trim = String.prototype.trim || function(o) {
             $tjs.pages = getFiles($tjs.config.pagesdir);
 
             $.getScript('//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js', function(){
+            $.getScript('//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/1.1.0/highlightjs-line-numbers.js', function(){
             $.getScript('./assets/js/marked.js', function(){
 
                 // document title
@@ -994,6 +995,7 @@ String.prototype.trim = String.prototype.trim || function(o) {
                         $(".master-header nav.topnav ul").hide()
                     });
                 }
+            });
             });
             });
         });
