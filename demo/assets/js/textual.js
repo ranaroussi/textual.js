@@ -678,6 +678,7 @@ String.prototype.trim = String.prototype.trim || function(o) {
         // add to page
         $(".home-only, .post-only, .page-only, .sitemap-only, .error-only, .author-only, .tag-only, .category-only").hide();
         $("main").fadeOut('fast', function() {
+
             $(".cover-image").first().hide().css('background-image', '');
             if (coverimage !== "") {
                 $('.cover-image').first().css('background-image', 'url('+coverimage+')').fadeIn('fast');
@@ -987,6 +988,10 @@ String.prototype.trim = String.prototype.trim || function(o) {
                 // render content
                 setTimeout($tjs.renderURL(), 100);
                 $(window).on('hashchange', $tjs.renderURL);
+
+                $("a").click(function(){
+                    $(".master-header nav.topnav ul").hide()
+                });
             });
             });
         });
